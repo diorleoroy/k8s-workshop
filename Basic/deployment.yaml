@@ -18,7 +18,7 @@ spec:
         phase: toi
     spec:
       containers:
-        - image: docker.io/diorleoroy:v1
+        - image: docker.io/diorleoroy/nodejs-sample:v1
           name: node-hello-world
           resources:
             requests:
