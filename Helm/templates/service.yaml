@@ -1,0 +1,19 @@
+#service.yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: {{ .Release.Namespace }}
+  name: {{ .Values.app.name }}
+  labels:
+    phase: {{ .Values.label.phase }}
+spec:
+  type:  {{ .Values.service.type }}
+  selector:
+    app: {{ .Values.app.name }}
+    phase: {{ .Values.label.phase }}
+  ports:
+    - port: {{ .Values.service.port }}
+      name: {{ .Values.app.name }}-port
+      protocol: TCP
+      targetPort: 8000

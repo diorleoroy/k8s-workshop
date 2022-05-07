@@ -1,0 +1,33 @@
+# deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: {{.Release.Namespace}}
+  name: {{ .Values.app.name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels: 
+      app: {{ .Values.app.name }}
+      phase: {{ .Values.label.phase }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.app.name }}
+        phase: {{ .Values.label.phase }}
+    spec:
+      containers:
+        - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          name: {{ .Values.app.name }}
+          resources:
+            requests:
+              cpu: {{ .Values.resources.requests.cpu }}
+              memory: {{ .Values.resources.requests.memory }}         
+            limits:
+              cpu: {{ .Values.resources.limits.cpu }}
+              memory: {{ .Values.resources.limits.memory }}
+          ports:
+            - containerPort: 8000
+      imagePullSecrets:
+        - name: regcred

@@ -1,0 +1,52 @@
+#dev-values.yaml
+
+app:
+#According different application
+  name: chat-agent
+
+image:
+#According different application
+  repository: aws.registry.trendmicro.com/audience-chat-agent/main
+  tag: 0.0.0
+
+label:
+  phase: dev
+
+#According different application
+env:
+  node_env: production
+  db_database: audience-chat-agent-dev-db
+  db_dialect: postgres
+  chat_agent_manager_server: localhost
+  chat_server: localhost
+
+secret:
+  database: db-secret
+
+
+replicaCount: 1
+
+service:
+  type: ClusterIP
+  port: 80
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 100Mi
+  limits:
+    cpu: 200m
+    memory: 150Mi
+
+
+horizontalPodAutoscaler:
+  minReplicas: 1
+  maxReplicas: 1
+  targetCPUUtilizationPercentage: 50
+  targetMemoryUtilizationPercentage: 60
+
+
+
+
+
+

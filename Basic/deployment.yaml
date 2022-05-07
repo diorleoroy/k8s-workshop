@@ -1,0 +1,33 @@
+# deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: workshop
+  name: node-hello-world
+spec:
+  replicas: 1
+  selector:
+    matchLabels: 
+      app: node-hello-world
+      phase: toi
+  template:
+    metadata:
+      labels:
+        app: node-hello-world
+        phase: toi
+    spec:
+      containers:
+        - image: metasecurityk8sworkshop.azurecr.io/eason-image:0.0.1
+          name: node-hello-world
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi     
+            limits:
+              cpu: 100m
+              memory: 200Mi
+          ports:
+            - containerPort: 8000
+      imagePullSecrets:
+        - name: regcred
