@@ -18,7 +18,7 @@ spec:
         phase: toi
     spec:
       containers:
-        - image: metasecurityk8sworkshop.azurecr.io/eason-image:0.0.1
+        - image: docker.io/diorleoroy:v1
           name: node-hello-world
           resources:
             requests:
