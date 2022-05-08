@@ -9,8 +9,8 @@ metadata:
     app: {{ .Values.app.name }}
     phase: {{ .Values.label.phase }}
 spec:
-  maxReplicas: {{ .Values.horizontalPodAutoscaler.minReplicas }}
-  minReplicas:  {{ .Values.horizontalPodAutoscaler.maxReplicas }}
+  maxReplicas: {{ .Values.horizontalPodAutoscaler.maxReplicas }}
+  minReplicas:  {{ .Values.horizontalPodAutoscaler.minReplicas }}
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
