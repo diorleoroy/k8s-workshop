@@ -8,12 +8,12 @@ metadata:
   labels:
     phase: toi
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: node-hello-world
     phase: toi
   ports:
-    - port: 8000
+    - port: 80
       name: node-hello-world-port
       protocol: TCP
       targetPort: 8000
