@@ -4,8 +4,8 @@ app:
   name: node-hello-world
 
 image:
-  repository: docker.io/diorleoroy/nodejs-sample:v1
-  tag: 0.0.0
+  repository: docker.io/diorleoroy/nodejs-sample
+  tag: v1
 
 label:
   phase: toi
