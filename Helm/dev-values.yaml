@@ -1,33 +1,19 @@
 #dev-values.yaml
 
 app:
-#According different application
-  name: chat-agent
+  name: node-hello-world
 
 image:
-#According different application
-  repository: aws.registry.trendmicro.com/audience-chat-agent/main
+  repository: docker.io/diorleoroy/nodejs-sample:v1
   tag: 0.0.0
 
 label:
-  phase: dev
-
-#According different application
-env:
-  node_env: production
-  db_database: audience-chat-agent-dev-db
-  db_dialect: postgres
-  chat_agent_manager_server: localhost
-  chat_server: localhost
-
-secret:
-  database: db-secret
-
+  phase: toi
 
 replicaCount: 1
 
 service:
-  type: ClusterIP
+  type: LoadBalancer
   port: 80
 
 resources:
@@ -41,7 +27,7 @@ resources:
 
 horizontalPodAutoscaler:
   minReplicas: 1
-  maxReplicas: 1
+  maxReplicas: 2
   targetCPUUtilizationPercentage: 50
   targetMemoryUtilizationPercentage: 60
 

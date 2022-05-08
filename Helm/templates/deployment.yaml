@@ -29,5 +29,3 @@ spec:
               memory: {{ .Values.resources.limits.memory }}
           ports:
             - containerPort: 8000
-      imagePullSecrets:
-        - name: regcred

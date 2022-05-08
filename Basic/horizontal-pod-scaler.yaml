@@ -1,0 +1,26 @@
+# horizontal-pod-scaler.yaml
+
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  namespace: workshop
+  name: node-hello-world
+  labels:
+    app: node-hello-world
+    phase: toi
+spec:
+  maxReplicas: 1
+  minReplicas:  2
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: node-hello-world
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      targetAverageUtilization: 50
+  - type: Resource
+    resource:
+      name: memory
+      targetAverageUtilization: 60
