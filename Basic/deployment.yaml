@@ -29,5 +29,3 @@ spec:
               memory: 200Mi
           ports:
             - containerPort: 8000
-      imagePullSecrets:
-        - name: regcred
