@@ -1,7 +1,7 @@
 #Chart.yaml
 
 apiVersion: v2
-name: audience-chat-agent
+name: workshop
 description: A Helm chart for Kubernetes
 
 
